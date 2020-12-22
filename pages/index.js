@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const auth = useAuth();
+  const {signinWithGithub, signinWithGoogle} = auth;
 
   return (
     <div className={styles.container}>
@@ -16,8 +17,8 @@ export default function Home() {
         <h1 className={styles.title}>Fast Feedback</h1>
       </main>
 
-      <button onClick={(e) => auth.signinWithGithub()}>Sign In With Github</button>
-      <button onClick={e => auth.signinWithGoogle('/')}>Sign In With Google</button>
+      <button onClick={e => signinWithGithub()}>Sign In With Github</button>
+      <button onClick={e => signinWithGoogle('/')}>Sign In With Google</button>
       {auth?.user && <button onClick={(e) => auth.signout()}>Sign Out</button>}
       <div>{auth?.user?.email}</div>
 
