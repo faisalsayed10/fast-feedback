@@ -14,6 +14,7 @@ import {
 
 import { useAuth } from '@/lib/auth';
 import { FastFeedbackIcon } from 'public/icons';
+import AddSiteModal from './AddSiteModal';
 
 const DashboardShell = ({ children }) => {
   const { user, signout } = useAuth();
@@ -42,7 +43,7 @@ const DashboardShell = ({ children }) => {
         </Flex>
       </Flex>
       <Flex backgroundColor="gray.100" p={8} height="100vh">
-        <Flex maxWidth="800px" w="100%" direction="column" ml="auto" mr="auto">
+        <Flex maxWidth="1250px" direction="column" margin="0 auto" px={8}>
           <Breadcrumb>
             <BreadcrumbItem isCurrentPage>
               <BreadcrumbLink color="gray.700" fontSize="sm">
@@ -50,9 +51,12 @@ const DashboardShell = ({ children }) => {
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          <Heading color="black" mb={4}>
-            My Sites
-          </Heading>
+          <Flex justifyContent="space-between">
+            <Heading color="black" mb={4}>
+              My Sites
+            </Heading>
+            <AddSiteModal>+ Add Site</AddSiteModal>
+          </Flex>
           {children}
         </Flex>
       </Flex>

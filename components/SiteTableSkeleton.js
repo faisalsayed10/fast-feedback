@@ -19,7 +19,7 @@ const SkeletonRow = ({ width }) => (
   </Box>
 );
 
-const SiteTableSkeleton = ({sites}) => {
+const SiteTableSkeleton = () => {
   return (
     <Table>
       <thead>
@@ -32,14 +32,14 @@ const SiteTableSkeleton = ({sites}) => {
         </Tr>
       </thead>
       <tbody>
-        <SkeletonRow width="75px"/>
-        <SkeletonRow width="125px"/>
-        <SkeletonRow width="50px"/>
-        <SkeletonRow width="100px"/>
-        <SkeletonRow width="75px"/>
+        <SkeletonRow width="75px" />
+        <SkeletonRow width="125px" />
+        <SkeletonRow width="50px" />
+        <SkeletonRow width="100px" />
+        <SkeletonRow width="75px" />
       </tbody>
     </Table>
-  )
-}
+  );
+};
 
 export default SiteTableSkeleton;

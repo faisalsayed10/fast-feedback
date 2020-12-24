@@ -1,7 +1,8 @@
 import { Flex, Button } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useAuth } from '@/lib/auth';
-import { FastFeedbackIcon, GitHubIcon, GoogleIcon } from 'public/icons';
+import { FastFeedbackIcon } from 'public/icons';
+import LoginButtons from '@/components/LoginButtons';
 
 export default function Home() {
   const auth = useAuth();
@@ -20,28 +21,24 @@ export default function Home() {
       </Head>
       <FastFeedbackIcon color="black" boxSize="64px" />
       {auth.user ? (
-        <Button onClick={(e) => signout()}>Sign Out</Button>
+        <Button
+          as="a"
+          href="/dashboard"
+          backgroundColor="gray.900"
+          color="white"
+          fontWeight="medium"
+          mt={4}
+          maxW="200px"
+          _hover={{ bg: 'gray.700' }}
+          _active={{
+            bg: 'gray.800',
+            transform: 'scale(0.95)'
+          }}
+        >
+          View Dashboard
+        </Button>
       ) : (
-        <>
-          <Button
-            mt={4}
-            size="sm"
-            backgroundColor="#EDF2F7"
-            onClick={(e) => signinWithGithub()}
-          >
-            <GitHubIcon mr={2} boxSize="24px" />
-            Sign In With Github
-          </Button>
-          <Button
-            mt={4}
-            backgroundColor="#EDF2F7"
-            size="sm"
-            onClick={(e) => signinWithGoogle('/')}
-          >
-            <GoogleIcon mr={2} boxSize="24px" />
-            Sign In With Google
-          </Button>
-        </>
+        <LoginButtons />
       )}
     </Flex>
   );
