@@ -5,7 +5,7 @@ import { FastFeedbackIcon, GitHubIcon, GoogleIcon } from 'public/icons';
 
 export default function Home() {
   const auth = useAuth();
-  const { signinWithGithub, signinWithGoogle } = auth;
+  const { signinWithGithub, signinWithGoogle, signout } = auth;
 
   return (
     <Flex
@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
       <FastFeedbackIcon color="black" boxSize="64px" />
       {auth.user ? (
-        <Button onClick={(e) => auth.signout()}>Sign Out</Button>
+        <Button onClick={(e) => signout()}>Sign Out</Button>
       ) : (
         <>
           <Button
