@@ -10,8 +10,6 @@ export default function Dashboard() {
   const auth = useAuth();
   const { data, error } = useSWR('/api/sites', fetcher)
 
-  console.log(data)
-
   if (!data) {
     return (
       <DashboardShell>
