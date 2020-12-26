@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 import AddSiteModal from './AddSiteModal';
 
-const EmptyState = () => (
+const DashboardEmptyState = () => (
     <Flex
       width="100%"
       backgroundColor="white"
@@ -18,4 +18,4 @@ const EmptyState = () => (
     </Flex>
 );
 
-export default EmptyState;
+export default DashboardEmptyState;

@@ -1,5 +1,5 @@
 import { useAuth } from '@/lib/auth';
-import EmptyState from '@/components/EmptyState';
+import FeedbackEmptyState from '@/components/FeedbackEmptyState';
 import FeedbackTableSkeleton from '@/components/FeedbackTableSkeleton';
 import DashboardShell from '@/components/DashboardShell';
 import useSWR from 'swr';
@@ -25,10 +25,10 @@ export default function MyFeedback() {
   return (
     <DashboardShell>
       <FeedbackTableHeader />
-      {data.feedback ? (
+      {data.feedback.length ? (
         <FeedbackTable allFeedback={data.feedback} />
       ) : (
-        <EmptyState />
+        <FeedbackEmptyState />
       )}
     </DashboardShell>
   );

@@ -1,5 +1,5 @@
 import { useAuth } from '@/lib/auth';
-import EmptyState from '@/components/EmptyState';
+import DashboardEmptyState from '@/components/DashboardEmptyState';
 import SiteTableSkeleton from '@/components/SiteTableSkeleton';
 import DashboardShell from '@/components/DashboardShell';
 import useSWR from 'swr';
@@ -23,7 +23,11 @@ export default function Dashboard() {
   return (
     <DashboardShell>
       <SiteTableHeader />
-      {data.sites.length ? <SiteTable sites={data.sites} /> : <EmptyState />}
+      {data.sites.length ? (
+        <SiteTable sites={data.sites} />
+      ) : (
+        <DashboardEmptyState />
+      )}
     </DashboardShell>
   );
 }
