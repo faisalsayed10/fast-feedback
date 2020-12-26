@@ -8,7 +8,7 @@ function LoginButtons() {
   const { signinWithGithub, signinWithGoogle } = auth;
 
   return (
-    <Flex direction={['row', 'column']}>
+    <Flex direction={['column', 'column']}>
       <Button
         onClick={() => signinWithGithub()}
         backgroundColor="gray.800"
@@ -16,7 +16,6 @@ function LoginButtons() {
         fontWeight="medium"
         leftIcon={<GitHubIcon />}
         mt={4}
-        mr={2}
         _hover={{ bg: 'gray.700' }}
         _active={{
           bg: 'gray.800',
@@ -27,15 +26,15 @@ function LoginButtons() {
       </Button>
       <Button
         onClick={() => signinWithGoogle()}
-        backgroundColor="white"
-        color="gray.900"
+        backgroundColor="gray.800"
+        color="white"
         variant="outline"
         fontWeight="medium"
         leftIcon={<GoogleIcon />}
         mt={4}
-        _hover={{ bg: 'gray.100' }}
+        _hover={{ bg: 'gray.700' }}
         _active={{
-          bg: 'gray.100',
+          bg: 'gray.800',
           transform: 'scale(0.95)'
         }}
       >

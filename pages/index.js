@@ -29,7 +29,7 @@ export default function Home() {
         />
       </Head>
       <FastFeedbackIcon color="black" boxSize="64px" />
-      <Text mb={4} fontSize="lg" align="">
+      <Text mb={4} fontSize="lg" align="center" px={4}>
         <Text as="span" fontWeight="bold" display="inline">
           Fast Feedback
         </Text>
