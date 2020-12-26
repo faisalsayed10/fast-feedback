@@ -1,4 +1,4 @@
-import { Flex, Button } from '@chakra-ui/react';
+import { Flex, Button, Text } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useAuth } from '@/lib/auth';
 import { FastFeedbackIcon } from 'public/icons';
@@ -18,8 +18,23 @@ export default function Home() {
     >
       <Head>
         <title>Fast Feedback</title>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
+            window.location.href = "/dashboard"
+          }
+        `
+          }}
+        />
       </Head>
       <FastFeedbackIcon color="black" boxSize="64px" />
+      <Text mb={4} fontSize="lg" align="">
+        <Text as="span" fontWeight="bold" display="inline">
+          Fast Feedback
+        </Text>
+        {` is the easiest way to add comments or reviews to your static site.`}
+      </Text>
       {auth.user ? (
         <Button
           as="a"

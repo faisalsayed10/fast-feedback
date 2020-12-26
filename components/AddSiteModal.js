@@ -28,11 +28,11 @@ const AddSiteModal = ({ children }) => {
   const auth = useAuth();
 
   const { handleSubmit, register } = useForm();
-  const {data} = useSWR('/api/sites', fetcher)
+  const { data } = useSWR('/api/sites', fetcher);
 
   const onCreate = ({ name, url }) => {
     const newSite = {
-      author: auth.user.uid,
+      authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
       name,
       url
@@ -45,9 +45,13 @@ const AddSiteModal = ({ children }) => {
       duration: 5000,
       isClosable: true
     });
-    mutate('/api/sites', async data => {
-      return { sites: [...data.sites, newSite] };
-    }, false)
+    mutate(
+      ['/api/sites', auth.user.token],
+      async (data) => {
+        return { sites: [...data.sites, newSite] };
+      },
+      false
+    );
     onClose();
   };
 

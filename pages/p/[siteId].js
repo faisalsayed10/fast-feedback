@@ -60,12 +60,13 @@ export async function getStaticProps(context) {
   return {
     props: {
       initialFeedback: feedbacks
-    }
+    },
+    unstable_revalidate: 1
   };
 }
 
 export async function getStaticPaths() {
-  const {sites} = await getAllSites();
+  const { sites } = await getAllSites();
   const paths = sites.map((site) => ({
     params: {
       siteId: site.id.toString()
