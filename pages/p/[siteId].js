@@ -5,16 +5,16 @@ import { Box, Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import Feedback from '@/components/Feedback';
 import { useAuth } from '@/lib/auth';
 import { getAllFeedback, getAllSites } from '@/lib/db-admin';
-import { createFeedback } from '@/lib/db'
+import { createFeedback } from '@/lib/db';
 
 const SiteFeedback = ({ initialFeedback }) => {
-  const auth = useAuth()
-  const router = useRouter()
-  const inputEl = useRef(null)
-  const [allFeedback, setAllFeedback] = useState(initialFeedback)
-  
+  const auth = useAuth();
+  const router = useRouter();
+  const inputEl = useRef(null);
+  const [allFeedback, setAllFeedback] = useState(initialFeedback);
+
   const onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const newFeedback = {
       author: auth.user.name,
@@ -24,11 +24,12 @@ const SiteFeedback = ({ initialFeedback }) => {
       createdAt: new Date().toISOString(),
       provider: auth.user.provider,
       status: 'pending'
-    }
-
-    createFeedback(newFeedback)
-    setAllFeedback([newFeedback, ...allFeedback])
-  }
+    };
+    
+    inputEl.current.value = ''
+    createFeedback(newFeedback);
+    setAllFeedback([newFeedback, ...allFeedback]);
+  };
 
   return (
     <Box
@@ -41,13 +42,20 @@ const SiteFeedback = ({ initialFeedback }) => {
       <Box as="form" onSubmit={onSubmit}>
         <FormControl my={8}>
           <FormLabel htmlFor="comment">Feedback</FormLabel>
-          <Input ref={inputEl} type="comment" id="comment" required={true}/>
-          <Button type="submit" mt={2} fontWeight="medium" variant="solid" backgroundColor="gray.200">
+          <Input ref={inputEl} type="comment" id="comment" required={true} />
+          <Button
+            type="submit"
+            mt={2}
+            fontWeight="medium"
+            variant="solid"
+            backgroundColor="gray.200"
+            disabled={router.isFallback}
+          >
             Add Feedback
           </Button>
         </FormControl>
       </Box>
-      {allFeedback.map((feedback) => (
+      {allFeedback && allFeedback.map((feedback) => (
         <Feedback key={feedback.id} {...feedback} />
       ))}
     </Box>
@@ -56,7 +64,7 @@ const SiteFeedback = ({ initialFeedback }) => {
 
 export async function getStaticProps(context) {
   const siteId = context.params.siteId;
-  const {feedbacks} = await getAllFeedback(siteId);
+  const { feedbacks } = await getAllFeedback(siteId);
   return {
     props: {
       initialFeedback: feedbacks
@@ -74,7 +82,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: false
+    fallback: true
   };
 }
 
