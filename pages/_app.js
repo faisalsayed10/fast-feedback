@@ -3,6 +3,8 @@ import { css, Global } from '@emotion/react';
 import { AuthProvider } from '@/lib/auth';
 import theme from '@/styles/theme';
 import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
+import SEO from 'next-seo.config';
 
 const GlobalStyle = ({ children }) => {
   return (
@@ -34,6 +36,7 @@ function App({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <GlobalStyle />
+        <DefaultSeo {...SEO} />
         <Component {...pageProps} />
       </AuthProvider>
     </ThemeProvider>
