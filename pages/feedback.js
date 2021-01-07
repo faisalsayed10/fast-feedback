@@ -25,7 +25,7 @@ export default function MyFeedback() {
   return (
     <DashboardShell>
       <FeedbackTableHeader />
-      {data.feedback?.length ? (
+      {data.feedback.length ? (
         <FeedbackTable allFeedback={data.feedback} />
       ) : (
         <FeedbackEmptyState />

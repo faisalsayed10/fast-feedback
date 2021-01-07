@@ -41,7 +41,7 @@ const DashboardShell = ({ children }) => {
                 <FastFeedbackIcon color="black" boxSize="24px" />
               </Link>
             </NextLink>
-            <NextLink href="/sites" passHref>
+            <NextLink href="/dashboard" passHref>
               <Link mx={4}>Sites</Link>
             </NextLink>
             <NextLink href="/feedback" passHref>

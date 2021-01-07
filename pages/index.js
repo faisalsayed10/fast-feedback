@@ -22,7 +22,7 @@ export default function Home() {
           dangerouslySetInnerHTML={{
             __html: `
           if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
-            window.location.href = "/sites"
+            window.location.href = "/dashboard"
           }
         `
           }}
@@ -38,7 +38,7 @@ export default function Home() {
       {auth.user ? (
         <Button
           as="a"
-          href="/sites"
+          href="/dashboard"
           backgroundColor="gray.900"
           color="white"
           fontWeight="medium"

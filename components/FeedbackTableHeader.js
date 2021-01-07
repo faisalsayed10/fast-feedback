@@ -9,12 +9,12 @@ import {
 const FeedbackTableHeader = () => (
   <>
     <Breadcrumb>
-      <BreadcrumbItem>
-          <BreadcrumbLink isCurrentPage>Feedback</BreadcrumbLink>
+      <BreadcrumbItem isCurrentPage>
+        <BreadcrumbLink>Feedback</BreadcrumbLink>
       </BreadcrumbItem>
     </Breadcrumb>
     <Flex justifyContent="space-between">
-      <Heading mb={8}>All Feedbacks</Heading>
+      <Heading mb={8}>My Feedback</Heading>
     </Flex>
   </>
 );
