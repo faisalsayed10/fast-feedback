@@ -25,8 +25,8 @@ const SiteFeedback = ({ initialFeedback }) => {
       provider: auth.user.provider,
       status: 'pending'
     };
-    
-    inputEl.current.value = ''
+
+    inputEl.current.value = '';
     createFeedback(newFeedback);
     setAllFeedback([newFeedback, ...allFeedback]);
   };
@@ -36,8 +36,6 @@ const SiteFeedback = ({ initialFeedback }) => {
       display="flex"
       flexDirection="column"
       width="full"
-      maxW="700px"
-      margin="0 auto"
     >
       <Box as="form" onSubmit={onSubmit}>
         <FormControl my={8}>
@@ -55,9 +53,10 @@ const SiteFeedback = ({ initialFeedback }) => {
           </Button>
         </FormControl>
       </Box>
-      {allFeedback && allFeedback.map((feedback) => (
-        <Feedback key={feedback.id} {...feedback} />
-      ))}
+      {allFeedback &&
+        allFeedback.map((feedback) => (
+          <Feedback key={feedback.id} {...feedback} />
+        ))}
     </Box>
   );
 };
