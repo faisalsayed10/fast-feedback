@@ -5,28 +5,28 @@ import DashboardShell from '@/components/DashboardShell';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import FeedbackTable from '@/components/FeedbackTable.js';
-import FeedbackTableHeader from '@/components/FeedbackTableHeader';
+import SiteFeedbackTableHeader from '@/components/SiteFeedbackTableHeader';
+import { useRouter } from 'next/router';
 
-export default function MyFeedback() {
+export default function SiteFeedback() {
   const { user } = useAuth();
-  const { data } = useSWR(user ? ['/api/feedback', user.token] : null, fetcher);
+  const { query } = useRouter();
+  const { data } = useSWR(user ? [`/api/feedback/${query.siteId}`, user.token] : null, fetcher);
 
   if (!data) {
     return (
       <DashboardShell>
-        <FeedbackTableHeader />
+        <SiteFeedbackTableHeader />
         <FeedbackTableSkeleton />
       </DashboardShell>
     );
   }
 
-  console.log(data)
-
   return (
     <DashboardShell>
-      <FeedbackTableHeader />
-      {data.feedback?.length ? (
-        <FeedbackTable allFeedback={data.feedback} />
+      <SiteFeedbackTableHeader siteName={data.site.name} />
+      {data.feedbacks.length ? (
+        <FeedbackTable allFeedback={data.feedbacks} />
       ) : (
         <FeedbackEmptyState />
       )}
